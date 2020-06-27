@@ -7,8 +7,8 @@ const schoolControllers = require('../controllers/school');
 router.get('/lessons', schoolControllers.getLessons);
 router.get('/lessons/:lessonId', schoolControllers.getLesson);
 
-router.post('/create-lesson', schoolControllers.postCreateLesson);
-router.post('/edit-lesson/:lessonId', schoolControllers.postEditLesson);
-router.post('/delete-lesson/:lessonId', schoolControllers.postDeleteLesson);
+router.post('/lessons', schoolControllers.postCreateLesson);
+router.put('/lessons/:lessonId', schoolControllers.postEditLesson);
+router.delete('/lessons/:lessonId', schoolControllers.postDeleteLesson);
 
 module.exports = router;
