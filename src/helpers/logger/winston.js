@@ -1,12 +1,12 @@
-const winston = require("winston");
+const winston = require('winston');
 
 const logger = winston.createLogger({
-  level: "info",
+  level: 'info',
   format: winston.format.json(),
-  defaultMeta: { service: "user-service" },
+  defaultMeta: { service: 'user-service' },
   transports: [
     // - Write all logs below to `winstonLog.log`
-    new winston.transports.File({ filename: "winstonLog.log" }),
+    new winston.transports.File({ filename: 'winstonLog.log' }),
   ],
 });
 

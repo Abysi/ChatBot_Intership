@@ -1,10 +1,10 @@
-const express = require("express");
-const dotenv = require("dotenv").config();
-const bodyParser = require("body-parser");
-const mongoose = require("mongoose");
+const express = require('express');
+require('dotenv').config();
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
-const logger = require("./helpers/logger/winston");
-const schoolRoutes = require("./routes/index");
+const logger = require('./helpers/logger/winston');
+const schoolRoutes = require('./routes/index');
 
 const app = express();
 
@@ -19,9 +19,9 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => {
-    console.log("Server run");
+    console.log('Server run');
     app.listen(process.env.SERVER_PORT);
   })
-  .catch((err) => {
-    logger.log("error", `Error with starting server ${err}`);
+  .catch(err => {
+    logger.log('error', `Error with starting server ${err}`);
   });

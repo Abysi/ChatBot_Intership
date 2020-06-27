@@ -1,5 +1,3 @@
-const { JsonWebTokenError } = require('jsonwebtoken');
-
 const jwt = require('jsonwebtoken');
 
 const authenticateToken = (req, res, next) => {

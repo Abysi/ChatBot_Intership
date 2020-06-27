@@ -1,31 +1,31 @@
-const logger = require("./helpers/logger/winston");
+const logger = require('../helpers/logger/winston');
 
-const Lesson = require("../models/lesson");
+const Lesson = require('../models/lesson');
 
 exports.getLessons = (req, res, next) => {
   Lesson.find()
-    .then((result) => {
+    .then(result => {
       res.send(result);
     })
-    .catch((err) => {
+    .catch(err => {
       res.status(500);
-      logger.log("error", `Error with getLessons request ${err}`);
+      logger.log('error', `Error with getLessons request ${err}`);
     });
 };
 
 exports.getLesson = (req, res, next) => {
   const lessonId = req.params.lessonId;
   Lesson.findById(lessonId)
-    .then((lesson) => {
+    .then(lesson => {
       if (lesson !== null) res.send(lesson);
       else {
         res.status(403);
         res.send(`Not found Lesson with id ${lessonId}`);
       }
     })
-    .catch((err) => {
+    .catch(err => {
       res.status(500);
-      logger.log("error", `Error with getLesson request ${err}`);
+      logger.log('error', `Error with getLesson request ${err}`);
     });
 };
 
@@ -42,16 +42,16 @@ exports.postCreateLesson = (req, res, next) => {
     .then(() => {
       res.status(200);
     })
-    .catch((err) => {
+    .catch(err => {
       res.status(403);
-      logger.log("error", `Error with postCreateLesson request ${err}`);
+      logger.log('error', `Error with postCreateLesson request ${err}`);
     });
 };
 
 exports.postEditLesson = (req, res, next) => {
   const lessonId = req.params.lessonId;
   Lesson.findById(lessonId)
-    .then((lesson) => {
+    .then(lesson => {
       (lesson.topic = req.body.topic),
         (lesson.teacherId = req.body.teacherId),
         (lesson.groupId = req.body.groupId),
@@ -62,9 +62,9 @@ exports.postEditLesson = (req, res, next) => {
     .then(() => {
       res.status(200);
     })
-    .catch((err) => {
+    .catch(err => {
       res.status(400);
-      logger.log("error", `Error with postEditLesson request ${err}`);
+      logger.log('error', `Error with postEditLesson request ${err}`);
     });
 };
 
@@ -74,8 +74,8 @@ exports.postDeleteLesson = (req, res, next) => {
     .then(() => {
       res.status(200);
     })
-    .catch((err) => {
+    .catch(err => {
       res.status(403);
-      logger.log("error", `Error with postDeleteLesson request ${err}`);
+      logger.log('error', `Error with postDeleteLesson request ${err}`);
     });
 };
